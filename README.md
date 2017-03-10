@@ -38,3 +38,20 @@ Note: Make sure to list all (if any) assumptions you make.
 
 #### Assumptions
 * The order of valid output doesn't matter
+
+### Abstract
+This program runs a first pass over each word in the dictionary and matches them against the first character in the input. All found matches are added to a list which will keep track of the sentence as it's being composed, it's position relative to the input, and the number of verbs, nouns and articles that each valid word addition sums to. So long as this list isn't empty, the program will continue to append every valid word to this sentence until the sentence is completed or shows to be invalid. All completed sentences are added to the complete list and removed from the processing list which are then validated. Each validated sentence from the completed list is added to the finished list which is used to output the results to the console.
+
+### Step-by-Step
+* A scanner object is created to accept user input and run the sentence composer
+* An initial round of iteration matches the first character of input to the first character of every word in the dictionary
+* When the first characters match, the scanWord function processes the matching verb, noun, or article.
+* All matching words are added to a Processing string array list along with the length of the word as an offset and the type of word it was. A colon is used as a delimiter. 
+* The format of each processing sentence is as follows: [sentence:offset:number of nouns:number of verbs:number of articles]
+* If nothing was added to the Processing string array list, then no initial word matches were made and the program outputs square brackets to indicate no valid sentence could be made with the input
+* In the case that the first iteration did populate the Processing list with valid first words, a while loop begins to iterate over the first entry in the Processing list until it is emptied. So long as there are entries in the Processing list, this loop will continue.
+* In this while loop, an initial check is made for whether the current Process' offset is equal to the input's length. If the offset of the first entry in the Process list matches the length of the input, then a full sentence has been made and it is added to the 'Completed' list and removed from the Processing list.
+* If these numbers don't match, the first entry in the Processing list will match the first characters of each word in the dictionary against the input at the given offset. When a match is found, scanWord is once again called to check if the word matches with the input. If a match is found, it is concatenated to its predecessor string, the offset is adjusted, and the type of the current word is incremented while preserving the amount of other words.
+* A validation is performed after Processing is emptied either by discarding invalid attempts or adding unvalidated full sentences to the Complete list.
+* The Complete list is iterated over, checking that at least a verb and noun or 2 articles are present in all completed sentences. Each sentence that meets this requirement is added to the Finished list and all others are ignored.
+* The program ends by printing out the task's format and the valid sentences in the Finished list based on the constraints given.
