@@ -3,7 +3,9 @@
 Imagine you have recently written a new language and collected all its words into a Dictionary. Similar to the English language, words can be categorized into nouns, verbs and articles. Below is the Dictionary:
 
 Nouns: "abcd", "c", "def", "h", "ij", "cde"
+
 Verbs: "bc", "fg", "g", "hij", "bcd"
+
 Articles: "a", "ac", "e"
 
 However, the rules for creating a sentence in this Language are very different. A valid sentence in this language should:
@@ -15,10 +17,15 @@ Your task is to write a sentence composer which will take a string as an input a
 
 For your convenience, we have provided some sample inputs and outputs.
 Input = "abcdefg", should return the following list:
+
 [
+
 "a bc def g",
+
 "a bcd e fg",
+
 "abcd e fg"
+
 ]
 
 Input = "abcc", should return the following list:
