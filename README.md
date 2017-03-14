@@ -40,7 +40,12 @@ Note: Make sure to list all (if any) assumptions you make.
 * The order of valid output doesn't matter
 
 ### Abstract
-This program begins by accepting input then attempting to match every word in the dictionary against the input. It begins by checking if first characters match then calls a function to complete word matching to save a little work. All matching words are added to a list which will keep track of the sentence as it's being composed, it's position relative to the input, and the number of verbs, nouns and articles that each valid word addition sums to. So long as this list isn't empty, the program will continue to append every valid word to this sentence until the sentence is completed or shows to be invalid. All completed sentences are added to the complete list and removed from the processing list which are then validated. Each validated sentence from the completed list is added to the finished list which is used to output the results to the console.
+This program begins by accepting input then attempts to match every word in the dictionary against the input from start to finish. It begins by checking if the first character of the input matches the first character of every word, then calls a word completion function that checks if every character of the word matches the input. All matching words are added to a list which will keep track of:
+* Each sentence as they are being composed
+* The index position of the input given previously matched words
+* The number of verbs, nouns and articles that each valid word addition sums to per sentence
+
+So long as this list isn't empty, the program will continue to match and append new words to an incomplete sentence until the sentence is completed or shows to be invalid. All completed sentences are added to the 'complete' list and removed from the 'processing' list which are then validated. This validation check views the count of nouns, verbs, and articles and passes sentences that meet the requirements on the the 'finished' list. The finished list outputs its contents to the console.
 
 ### Step-by-Step
 * A scanner object is created to accept user input and run the sentence composer
